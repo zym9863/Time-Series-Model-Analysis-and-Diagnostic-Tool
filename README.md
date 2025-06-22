@@ -1,3 +1,5 @@
+[English](README_EN.md) | [中文](README.md)
+
 # 时间序列模型分析与诊断工具
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://python.org)

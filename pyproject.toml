@@ -9,7 +9,7 @@ dependencies = [
     "click>=8.0.0",
 ]
 authors = [
-    {name = "Time Series Analysis Tool", email = "example@example.com"}
+    {name = "Time Series Analysis Tool", email = "ym214413520@gmail.com"}
 ]
 keywords = ["time-series", "analysis", "diagnostic", "stationarity", "invertibility"]
 classifiers = [
@@ -29,8 +29,8 @@ classifiers = [
 tsdiag = "tsdiag.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/example/time-series-model-analysis-and-diagnostic-tool"
-Repository = "https://github.com/example/time-series-model-analysis-and-diagnostic-tool"
+Homepage = "https://github.com/zym9863/time-series-model-analysis-and-diagnostic-tool"
+Repository = "https://github.com/zym9863/time-series-model-analysis-and-diagnostic-tool"
 
 [build-system]
 requires = ["hatchling"]
