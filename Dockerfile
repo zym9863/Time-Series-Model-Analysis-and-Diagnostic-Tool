@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
 COPY pyproject.toml uv.lock ./
 COPY src/ ./src/
 COPY app.py ./
+COPY README.md ./
 
 # 安装uv包管理器
 RUN pip install uv
