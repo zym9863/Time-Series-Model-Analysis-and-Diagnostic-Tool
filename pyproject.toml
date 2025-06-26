@@ -7,6 +7,9 @@ requires-python = ">=3.8"
 dependencies = [
     "numpy>=1.20.0",
     "click>=8.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.22.0",
+    "pydantic>=2.0.0",
 ]
 authors = [
     {name = "Time Series Analysis Tool", email = "ym214413520@gmail.com"}
@@ -27,6 +30,7 @@ classifiers = [
 
 [project.scripts]
 tsdiag = "tsdiag.cli:main"
+tsdiag-api = "tsdiag.fastapi_app:main"
 
 [project.urls]
 Homepage = "https://github.com/zym9863/time-series-model-analysis-and-diagnostic-tool"
