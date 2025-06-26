@@ -20,7 +20,6 @@ Dockerfile
 docker-compose.yml
 
 # Documentation
-README.md
 README_EN.md
 README_API.md
 
