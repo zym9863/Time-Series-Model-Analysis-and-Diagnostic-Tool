@@ -170,6 +170,20 @@ def quick_arma_check(
     return ar_stationary, ma_invertible
 
 
+def _convert_numpy_types(obj):
+    """递归转换字典中的Numpy类型为原生Python类型"""
+    if isinstance(obj, dict):
+        return {k: _convert_numpy_types(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [_convert_numpy_types(i) for i in obj]
+    elif isinstance(obj, np.bool_):
+        return bool(obj)
+    elif isinstance(obj, np.integer):
+        return int(obj)
+    elif isinstance(obj, np.floating):
+        return float(obj)
+    return obj
+
 def analyze_model_stability(
     ar_coefficients: Union[List[float], np.ndarray] = None,
     ma_coefficients: Union[List[float], np.ndarray] = None
@@ -235,7 +249,7 @@ def analyze_model_stability(
         }
         analysis['overall']['max_risk_level'] = ['low', 'medium', 'high'][analysis['overall']['max_risk_level']]
     
-    return analysis
+    return _convert_numpy_types(analysis)
 
 
 def batch_model_analysis(
