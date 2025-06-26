@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Python
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env.example
+.coverage
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Documentation
+README.md
+README_EN.md
+README_API.md
+
+# Other
+LICENSE
+tests/
+examples/
