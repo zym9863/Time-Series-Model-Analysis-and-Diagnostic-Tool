@@ -1,6 +1,6 @@
 [project]
 name = "time-series-model-analysis-and-diagnostic-tool"
-version = "0.1.0"
+version = "0.1.2"
 description = "时间序列模型分析与诊断工具 - 提供AR模型平稳性检验和MA模型可逆性检验功能"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -12,7 +12,7 @@ dependencies = [
     "pydantic>=2.0.0",
 ]
 authors = [
-    {name = "Time Series Analysis Tool", email = "ym214413520@gmail.com"}
+    {name = "zym", email = "ym214413520@gmail.com"}
 ]
 keywords = ["time-series", "analysis", "diagnostic", "stationarity", "invertibility"]
 classifiers = [
