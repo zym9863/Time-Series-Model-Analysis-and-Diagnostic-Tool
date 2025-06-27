@@ -10,8 +10,8 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  # Normalize repository name for Docker (lowercase, replace special chars)
+  IMAGE_NAME: time-series-model-analysis-and-diagnostic-tool
 
 jobs:
   build:
@@ -57,7 +57,7 @@ jobs:
         with:
           images: |
             ${{ secrets.DOCKERHUB_USERNAME }}/time-series-model-analysis
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -65,6 +65,8 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') || github.ref == format('refs/heads/{0}', 'master') }}
+          flavor: |
+            latest=auto
 
       - name: Build and push Docker image
         id: build-and-push
@@ -115,7 +117,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ghcr.io/${{ github.repository }}:latest'
+          image-ref: '${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest'
           format: 'sarif'
           output: 'trivy-results.sarif'
 
@@ -133,6 +135,6 @@ jobs:
       - name: Deploy to staging
         run: |
           echo "Deploying to staging environment..."
-          echo "Image: ghcr.io/${{ github.repository }}:latest"
+          echo "Image: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest"
           # 这里可以添加实际的部署逻辑
           # 例如：kubectl apply、docker-compose up等
